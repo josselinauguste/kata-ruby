@@ -3,7 +3,7 @@ class Basket < Array
   
   def get_price()
     reduce([[]]) {|a, b| lot(a, b)}
-    .reduce([]) {|a, bs| a << bs.length * UNIT_PRICE * reduction_factor(bs.length)}
+    .map {|bs| bs.length * UNIT_PRICE * reduction_factor(bs.length)}
     .reduce(&:+)
   end
   
